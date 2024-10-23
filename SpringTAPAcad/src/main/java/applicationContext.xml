@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    					http://www.springframework.org/schema/beans/spring-beans.xsd
+        				http://www.springframework.org/schema/util 
+        				http://www.springframework.org/schema/util/spring-util.xsd"> 
+        
+    <!-- bean definitions here -->
+    <!-- This is Constructor Injection -->
+    <!--  
+    <bean id="goldCustomer" class="com.spring.GoldCustomer">
+    	<constructor-arg name="id" value="101"></constructor-arg>
+    	<constructor-arg name="name" value="Alex"></constructor-arg>
+    	<constructor-arg name="address" ref="address"></constructor-arg>
+    </bean>
+    
+    <bean id="address" class="com.spring.Address">
+    	<constructor-arg name="city" value="Hyderbad"></constructor-arg>
+    	<constructor-arg name="state" value="Telangana"></constructor-arg>
+    </bean>
+    -->
+    <!-- This is Setter Injection -->
+    <bean 
+    	id="goldCustomer" 
+    	class="com.spring.GoldCustomer" 
+    	scope="prototype"
+    	init-method="start"
+    	destroy-method="stop">
+    	<property name="id" value="101"></property>
+    	<property name="name" value="Alex"></property>
+    	<property name="address" ref="address"></property>
+    </bean>
+    
+    <bean id="address" class="com.spring.Address" scope="prototype">
+    	<property name="city" value="Hyderbad"></property>
+    	<property name="state" value="Telangana"></property>
+    </bean>
+</beans>
